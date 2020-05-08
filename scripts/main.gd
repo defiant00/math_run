@@ -1,9 +1,12 @@
 extends Node2D
 
+const BG_SPEED_MULT = 0.5
 const NUM_PLATFORMS = 1
 var platforms = []
 var nextHeight = 400
 var spawnCounter = 100
+
+onready var bg = $ParallaxBackground/ParallaxLayer/bg
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,9 +26,16 @@ func next_height():
 	nextHeight += (randi() % 500) - 100
 
 func _process(delta):
+	# speed up player
 	Status.playerSpeed += delta * 50
 	Status.playerSpeed = min(Status.playerSpeed, Status.MAX_PLAYER_SPEED)
 	
+	# move the bg
+	bg.position.x -= Status.playerSpeed * delta * BG_SPEED_MULT
+	while bg.position.x < -1024:
+		bg.position.x += 1024
+	
+	# spawn platforms
 	spawnCounter -= Status.playerSpeed * delta
 	if spawnCounter < 0:
 		var width = add_platform(randi() % NUM_PLATFORMS, 1300 + spawnCounter, nextHeight)
