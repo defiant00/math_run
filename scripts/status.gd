@@ -3,6 +3,7 @@ extends Node
 # TODO
 #
 # questions
+# score counter
 # slowdown pickup
 # slow-mo at question
 # menu
@@ -22,6 +23,7 @@ extends Node
 #		fall
 #		roll
 #	background
+#	background items
 #	slowdown pickup
 #	platforms
 #	question platform
