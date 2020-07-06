@@ -45,6 +45,9 @@ extends Node
 # 
 # if you die from an answer kill area, show a hint/answer as it's resetting
 
+enum State {COUNTDOWN, RUNNING}
+
 const MAX_PLAYER_SPEED = 2000
 
+var gameState = State.COUNTDOWN
 var playerSpeed = 300

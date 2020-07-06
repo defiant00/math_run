@@ -13,7 +13,7 @@ onready var platformContainer = $platforms
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().paused = true
+	Status.gameState = Status.State.COUNTDOWN
 	randomize()
 	for i in range(NUM_PLATFORMS):
 		platforms.append(load("res://scenes/platforms/p%s.tscn" % i))
@@ -40,7 +40,7 @@ func _process(delta):
 			else:
 				middleText.text = "Go!"
 		if startCounter <= 1:
-			get_tree().paused = false
+			Status.gameState = Status.State.RUNNING
 	else:
 		# hide Go! label after a second
 		if startCounter > 0:
