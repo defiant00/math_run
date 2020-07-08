@@ -67,8 +67,3 @@ func _process(delta):
 			
 			var gap = max((randi() % int(Status.playerSpeed * 0.8 + heightChange) + 20), heightChange)
 			spawnCounter += width + gap
-
-
-func _on_start_timer_timeout():
-	print('tick')
-	pass # Replace with function body.
